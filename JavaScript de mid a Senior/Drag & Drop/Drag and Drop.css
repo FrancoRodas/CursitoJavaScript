@@ -1,0 +1,19 @@
+body{
+    color: #000;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.cuadrado {
+    padding: 100px 200px;
+    margin: 50px;
+    background: #ccc;
+}
+
+.circulo{
+    border-radius: 50%;
+    border-radius: 40px;
+    background-color: red;
+    display: inline-block;
+}

@@ -1,0 +1,509 @@
+En JavaScript, usamos variables para almacenar datos. Hay tres formas principales de declarar variables:
+
+var → Antiguo, no recomendado (tiene problemas de alcance).
+let → Recomendado cuando el valor puede cambiar.
+const → Recomendado cuando el valor no cambiará.
+Ejemplo de declaración de variables:
+var nombre = "Juan";  // No recomendado
+let edad = 25;        // Variable que puede cambiar
+const PI = 3.1416;    // Constante, su valor no cambia
+
+2️⃣ Tipos de Datos en JavaScript
+En JS, los datos pueden tener diferentes tipos. Aquí los más importantes:
+
+Tipo de Dato	Descripción	                         Ejemplo
+
+string	        Cadenas de texto	                 "Hola mundo"
+
+number	        Números enteros y decimales	         42, 3.14
+
+boolean	        Verdadero o falso	                 true, false
+
+null	        Valor intencionalmente vacío	         null
+
+undefined	Variable declarada sin valor	         let x;
+
+object	        Colección de datos clave-valor	        { nombre: "Juan", edad: 25 }
+
+array	        Lista de elementos	                [1, 2, 3]
+
+Ejemplo de cada tipo
+
+let texto = "Hola, soy un string";  // String
+let numero = 42;                    // Number
+let esMayor = true;                  // Boolean
+let vacio = null;                     // Null
+let sinDefinir;                        // Undefined
+let persona = { nombre: "Ana", edad: 30 };  // Object
+let numeros = [10, 20, 30];                  // Array
+
+Conversión de Tipos (Coerción de Datos) en JavaScript
+La coerción de tipos es el proceso en el que JavaScript convierte automáticamente o manualmente un tipo de dato en otro.
+
+Existen dos tipos de coerción:
+
+Coerción implícita → JS convierte un tipo automáticamente.
+Coerción explícita → Nosotros convertimos el tipo de dato manualmente.
+Vamos a ver cada una con ejemplos.
+
+1️⃣ Coerción Implícita (Automática)
+Ocurre cuando JavaScript cambia un tipo de dato sin que se lo pidamos directamente.
+
+Ejemplo 1: String + Número → String
+
+console.log("5" + 3);  
+📌 Salida: "53"
+📌 Explicación: Como hay un string y un number, JS convierte el 3 en "3" y luego los concatena.
+
+Ejemplo 2: String - Número → Number
+
+console.log("10" - 2);  
+📌 Salida: 8
+📌 Explicación: A diferencia del +, con el -, JS convierte "10" en 10 (número) antes de hacer la operación.
+
+Ejemplo 3: Multiplicación y División con Strings
+
+console.log("6" * "3");  
+console.log("10" / "2");  
+📌 Salida: 18 y 5
+📌 Explicación: Como la multiplicación y división no tienen sentido con strings, JS convierte "6" y "3" en números antes de operar.
+
+Ejemplo 4: Booleanos convertidos a Número
+
+console.log(true + 1);  
+console.log(false + 5);  
+📌 Salida: 2 y 5
+📌 Explicación:
+
+true se convierte en 1, por eso 1 + 1 = 2.
+false se convierte en 0, por eso 0 + 5 = 5.
+
+Ejemplo 5: Comparaciones (== vs ===)
+
+console.log("5" == 5);  
+console.log("5" === 5);  
+📌 Salida: true y false
+📌 Explicación:
+
+== convierte "5" a número antes de comparar.
+=== compara sin conversión (como "5" es string y 5 es número, da false).
+🛑 ¡Cuidado! La coerción implícita puede llevar a errores si no se entiende bien.
+
+2️⃣ Coerción Explícita (Manual)
+Cuando queremos cambiar el tipo de dato nosotros mismos, usamos métodos como:
+
+Number()
+String()
+Boolean()
+parseInt() / parseFloat()
+
+Ejemplo 1: Convertir String a Número
+
+let numTexto = "25";
+let numReal = Number(numTexto);  // Convierte "25" en 25
+console.log(numReal + 5);  // 30
+
+Ejemplo 2: Convertir Número a String
+
+let numero = 100;
+let texto = String(numero);  // Convierte 100 en "100"
+console.log(texto + " puntos");  // "100 puntos"
+
+Ejemplo 3: Convertir a Booleano
+
+console.log(Boolean(1));    // true
+console.log(Boolean(0));    // false
+console.log(Boolean(""));   // false
+console.log(Boolean("Hola")); // true
+📌 Reglas de conversión a Booleano:
+
+0, "" (string vacío), null, undefined, NaN → false
+Cualquier otro valor → true
+
+Ejemplo 4: Convertir con parseInt() y parseFloat()
+
+console.log(parseInt("10.99"));  // 10 (redondea hacia abajo)
+console.log(parseFloat("10.99"));  // 10.99 (mantiene decimales)
+📌 parseInt() solo toma la parte entera, mientras que parseFloat() conserva los decimales.
+
+
+
+🧮 Operadores en JavaScript (Explicación Detallada)
+Los operadores son símbolos que nos permiten realizar operaciones matemáticas, comparaciones y asignaciones en JavaScript. Se dividen en varias categorías:
+
+1️⃣ Operadores Aritméticos
+Se usan para realizar cálculos matemáticos.
+
+Operador	Descripción	        Ejemplo	        Resultado
++	        Suma	            5 + 2	        7
+-	        Resta	            5 -             3
+*	        Multiplicación	    5 * 2	        10
+/	        División	        5 / 2	        2.5
+%	        Módulo (resto)	    5 % 2	        1
+**	        Exponente	        5 ** 2	        25
+
+📌 Ejemplo en código:
+
+let a = 10;
+let b = 3;
+
+console.log(a + b); // 13
+console.log(a - b); // 7
+console.log(a * b); // 30
+console.log(a / b); // 3.333...
+console.log(a % b); // 1  (resto de la división)
+console.log(a ** b); // 1000 (10 elevado a la 3)
+
+2️⃣ Operadores de Asignación
+Se usan para asignar valores a variables.
+
+Operador	Descripción         Ejemplo	   Equivalente a...
+=	        Asignación	        x = 5	   -
++=	        Suma y asigna	    x += 5	   x = x + 5
+-=	        Resta y asigna	    x -= 5	   x = x - 5
+*=	        Multiplica y asigna	x *= 5	   x = x * 5
+/=	        Divide y asigna	    x /= 5	   x = x / 5
+%=	        Modulo y asigna	    x %= 5	   x = x % 5
+**=	        Exponente y asigna	x **= 2	   x = x ** 2
+📌 Ejemplo en código:
+
+let x = 10;
+
+x += 5; // x = x + 5 → x = 15
+x -= 2; // x = x - 2 → x = 13
+x *= 3; // x = x * 3 → x = 39
+x /= 3; // x = x / 3 → x = 13
+console.log(x); // 13
+
+3️⃣ Operadores de Comparación
+Sirven para comparar valores y devuelven true o false.
+
+Operador	Descripción	                              Ejemplo	     Resultado
+==	        Igualdad (compara valor)	              5 == "5"	     true
+===	        Igualdad estricta (compara valor y tipo)  5 === "5"	     false
+!=	        Diferente (compara valor)	              5 != "5"	     false
+!==	        Diferente estricto (compara valor y tipo) 5 !== "5"	     true
+>	        Mayor que	                              10 > 5	     true
+<	        Menor que	                              10 < 5	     false
+>=	        Mayor o igual que	                      10 >= 10	     true
+<=	        Menor o igual que	                      10 <= 5	     false
+📌 Ejemplo en código:
+
+console.log(5 == "5");  // true (solo compara valores)
+console.log(5 === "5"); // false (compara valor y tipo)
+console.log(10 != "10"); // false
+console.log(10 !== "10"); // true
+console.log(10 > 5);  // true
+console.log(10 < 5);  // false
+console.log(10 >= 10); // true
+console.log(10 <= 5);  // false
+🚨 ¡OJO con == y ===!
+
+5 == "5" da true porque convierte el string a número antes de comparar.
+5 === "5" da false porque compara también el tipo de dato.
+
+4️⃣ Operadores Lógicos
+Se usan para evaluar expresiones lógicas.
+
+Operador	Descripción	    Ejemplo	        Resultado
+&&	        AND (y)	        true && false   false
+||	                        ||	            OR (o)
+!	        NOT (negación)	!true	        false
+📌 Ejemplo en código:
+
+let mayor = true;
+let tieneDNI = false;
+
+console.log(mayor && tieneDNI); // false (las dos condiciones deben ser true)
+console.log(mayor || tieneDNI); // true (basta con que una sea true)
+console.log(!mayor); // false (niega el valor de mayor)
+🛑 Ejemplo real:
+
+let edad = 20;
+let tieneLicencia = true;
+
+if (edad >= 18 && tieneLicencia) {
+    console.log("Puedes manejar.");
+} else {
+    console.log("No puedes manejar.");
+}
+Si edad = 20 y tieneLicencia = true, el mensaje será "Puedes manejar."
+Si edad = 16, el mensaje será "No puedes manejar."
+
+5️⃣ Operadores de Incremento y Decremento
+Se usan para aumentar o disminuir un valor en 1.
+
+Operador	Descripción	              Ejemplo	   Resultado
+++	        Incremento	              x++	       Aumenta x en 1
+--	        Decremento	              x--	       Disminuye x en 1
+📌 Ejemplo en código:
+
+let contador = 5;
+
+console.log(contador++); // 5 (primero muestra el valor, luego suma 1)
+console.log(contador); // 6 (ahora el valor sí aumentó)
+
+console.log(++contador); // 7 (suma 1 antes de mostrar el valor)
+console.log(contador--); // 7 (muestra el valor, luego resta 1)
+console.log(contador); // 6
+🚀 Diferencia entre x++ y ++x
+
+x++ → Post-incremento: primero usa el valor, luego lo aumenta.
+++x → Pre-incremento: primero aumenta el valor, luego lo usa.
+
+Unidad 3: Control de Flujo en JavaScript
+En programación, el control de flujo nos permite decidir qué partes del código se ejecutan y cuántas veces. Esto lo logramos con condicionales, bucles y manejo de errores.
+
+1️⃣ Condicionales (if, else if, else y switch)
+Los condicionales nos permiten tomar decisiones en el código según una condición.
+
+🔹 1.1 If - Else If - Else
+
+Si una condición se cumple (true), ejecuta un bloque de código; si no, evalúa otras opciones.
+
+Ejemplo: Decidir si hace frío o calor según la temperatura
+let temperatura = 18;
+
+if (temperatura > 25) {
+    console.log("Hace calor, salí en remera.");
+} else if (temperatura >= 15 && temperatura <= 25) {
+    console.log("El clima está templado.");
+} else {
+    console.log("Hace frío, llevate abrigo.");
+}
+🔹 Explicación:
+
+Si la temperatura es mayor a 25, se ejecuta el primer bloque.
+Si no, pero está entre 15 y 25, se ejecuta el segundo bloque.
+Si no cumple ninguna de las anteriores, se ejecuta el else.
+
+🔹 1.2 Switch (Alternativa al if)
+
+switch es útil cuando hay muchas opciones fijas.
+
+Ejemplo: Menú de opciones
+let opcion = 2;
+
+switch (opcion) {
+    case 1:
+        console.log("Elegiste café.");
+        break;
+    case 2:
+        console.log("Elegiste té.");
+        break;
+    case 3:
+        console.log("Elegiste jugo.");
+        break;
+    default:
+        console.log("Opción inválida.");
+}
+🔹 Explicación:
+
+Cada case representa un posible valor de opcion.
+break detiene el switch para que no siga ejecutando los demás case.
+default se ejecuta si ninguna opción coincide.
+
+2️⃣ Bucles (for, while, do while)
+Los bucles permiten repetir un bloque de código varias veces.
+
+🔹 2.1 Bucle For (Para repetir un número fijo de veces)
+El for es ideal cuando sabemos cuántas veces queremos repetir algo.
+
+Ejemplo: Mostrar los números del 1 al 5
+for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}
+🔹 Explicación:
+
+let i = 1: inicializa la variable i.
+i <= 5: la condición que debe cumplirse para que el bucle siga.
+i++: incrementa i en cada iteración.
+📌 Salida:
+1
+2
+3
+4
+5
+
+🔹 ¿Qué es i en un bucle for?
+i es solo una variable que usamos como contador en un bucle. La usamos para llevar el control de cuántas veces se repite el código dentro del bucle.
+
+🔹 Estructura de un for
+Un bucle for tiene tres partes principales:
+
+for (inicialización; condición; incremento) {
+    // Código que se ejecuta en cada iteración
+}
+✅ Inicialización: Se ejecuta solo una vez al principio del bucle. Aquí definimos el valor inicial de i (normalmente 0 o 1).
+✅ Condición: Mientras esta condición sea true, el bucle sigue ejecutándose.
+✅ Incremento: Se ejecuta después de cada iteración y modifica el valor de i.
+
+🔹 Ejemplo paso a paso
+Vamos a analizar este código:
+
+for (let i = 1; i <= 5; i++) {
+    console.log("Iteración número: " + i);
+}
+🔍 Explicación paso a paso: 1️⃣ Inicialización: let i = 1; → Se define i con el valor inicial de 1.
+2️⃣ Condición: i <= 5; → Mientras i sea menor o igual a 5, el bucle sigue ejecutándose.
+3️⃣ Ejecución: console.log("Iteración número: " + i); → Se imprime el valor de i.
+4️⃣ Incremento: i++ → i aumenta en 1 después de cada iteración.
+
+🔽 Salida en la consola:
+
+Iteración número: 1
+Iteración número: 2
+Iteración número: 3
+Iteración número: 4
+Iteración número: 5
+
+🔹 Tipos de incremento
+🟢 Incremento de 1 en 1 (más común):
+
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+🔹 i++ es lo mismo que i = i + 1 → Aumenta i en 1 en cada iteración.
+
+🟡 Incremento de más de 1 (por ejemplo, de 2 en 2):
+
+for (let i = 0; i < 10; i += 2) {
+    console.log(i);
+}
+🔹 i += 2 significa que i aumenta de 2 en 2.
+
+🔴 Decremento (bajando en lugar de subir):
+
+for (let i = 10; i >= 0; i--) {
+    console.log(i);
+}
+🔹 i-- es lo mismo que i = i - 1, es decir, el contador va bajando.
+
+
+🔹 Ejemplo práctico con tabla de multiplicar
+
+Ahora que entendemos el incremento, veamos cómo funciona en un ejercicio real:
+
+let numero = parseInt(readline.question("Ingrese un número: "));
+
+for (let i = 1; i <= 10; i++) {
+    console.log(`${numero} x ${i} = ${numero * i}`);
+}
+
+🔹 i comienza en 1 y se incrementa hasta 10. Cada vez que aumenta, se multiplica numero * i.
+
+🔽 Salida si el usuario ingresa 5:
+
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+...
+5 x 10 = 50
+
+🔹 Conclusión
+📌 i es el contador que usamos en un bucle for para controlar cuántas veces se ejecuta el código.
+📌 Siempre inicia en un valor específico, tiene una condición para seguir, y se incrementa en cada repetición.
+📌 El incremento puede ser i++ (de 1 en 1), i += 2 (de 2 en 2), o incluso i-- (para contar hacia atrás).
+
+
+
+🔹 2.2 Bucle While (Repite mientras una condición sea verdadera)
+while repite un bloque de código hasta que una condición deje de cumplirse.
+
+Ejemplo: Contar del 1 al 5 usando while
+let contador = 1;
+
+while (contador <= 5) {
+    console.log(contador);
+    contador++; // Importante: sin esto sería un bucle infinito.
+}
+📌 Salida:
+1
+2
+3
+4
+5
+
+🔹 2.3 Bucle Do While (Ejecuta al menos una vez)
+El do while se ejecuta al menos una vez, incluso si la condición es falsa.
+
+Ejemplo: Pedir un número mayor a 10
+let numero;
+do {
+    numero = parseInt(readline.question("Ingrese un número mayor a 10: "));
+} while (numero <= 10);
+
+console.log(`Ingresaste: ${numero}`);
+🔹 Explicación:
+
+Primero ejecuta el código, sin importar si la condición es falsa.
+Luego verifica la condición para decidir si repite o no.
+
+3️⃣ Control de Bucles (break y continue)
+A veces necesitamos interrumpir un bucle antes de que termine (break) o saltar una iteración (continue).
+
+🔹 3.1 Break (Salir de un bucle)
+Se usa para detener un bucle cuando se cumple una condición.
+
+Ejemplo: Detener el bucle al encontrar un número
+for (let i = 1; i <= 10; i++) {
+    if (i === 5) {
+        console.log("Encontré el 5, saliendo...");
+        break; // Detiene el bucle
+    }
+    console.log(i);
+}
+📌 Salida:
+1
+2
+3
+4
+Encontré el 5, saliendo...
+
+🔹 3.2 Continue (Saltar una iteración)
+Se usa para saltar una iteración específica sin detener el bucle.
+
+Ejemplo: Mostrar números del 1 al 5, pero sin el 3
+
+for (let i = 1; i <= 5; i++) {
+    if (i === 3) {
+        continue; // Salta el número 3
+    }
+    console.log(i);
+}
+📌 Salida:
+1
+2
+4
+5
+
+4️⃣ Manejo de Errores (try...catch)
+Los errores pueden hacer que el código se detenga. Para evitarlo, usamos try...catch.
+
+Ejemplo: Manejo de error al dividir por 0
+try {
+    let num1 = 10;
+    let num2 = 0;
+    if (num2 === 0) {
+        throw new Error("No se puede dividir por cero.");
+    }
+    console.log(num1 / num2);
+} catch (error) {
+    console.log("Error:", error.message);
+}
+📌 Salida:
+Error: No se puede dividir por cero.
+🔹 Explicación:
+
+try ejecuta el código.
+Si ocurre un error, catch lo atrapa y evita que el programa se detenga.
+throw lanza un error manualmente.
+Resumen de la Unidad
+✅ if - else if - else: Para tomar decisiones.
+✅ switch: Para múltiples opciones fijas.
+✅ for: Para repetir algo un número determinado de veces.
+✅ while: Para repetir algo mientras una condición sea verdadera.
+✅ do while: Para ejecutar al menos una vez antes de verificar la condición.
+✅ break: Para detener un bucle antes de que termine.
+✅ continue: Para saltar una iteración sin salir del bucle.
+✅ try...catch: Para manejar errores sin que el programa se rompa.

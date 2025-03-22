@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    color: rgb(51, 48, 48);
+    background-color: rgb(74, 74, 195);
+}
+
+div {
+    background-color: rgb(5, 87, 130);
+    padding: 20px;
+}
+
+h2 {
+    color: rgb(138, 59, 211);
+}
+
+p {
+    color: aqua;
+}
+
+p:hover {
+    background-color: black;
+}
