@@ -828,3 +828,131 @@ let coche = {
 };
 
 coche.mostrarInfo(); // Esto también imprimirá: Este coche es un Lamborghini Huracán del año 2022.
+
+🔹 Cómo recorrer un objeto en JavaScript
+A diferencia de los arrays, los objetos no tienen índices numéricos, así que necesitamos otras formas de recorrer sus propiedades y valores.
+
+📌 Tres métodos comunes para recorrer un objeto:
+
+for...in → Recorre las claves (propiedades) del objeto.
+
+Object.keys(obj) → Devuelve un array con las claves del objeto.
+
+Object.values(obj) → Devuelve un array con los valores del objeto.
+
+Object.entries(obj) → Devuelve un array con pares [clave, valor].
+
+📌 Ejemplo con for...in
+js
+
+let persona = {
+    nombre: "Ana",
+    edad: 30,
+    profesion: "Ingeniera"
+};
+
+for (let clave in persona) {
+    console.log(`${clave}: ${persona[clave]}`);
+}
+📝 Salida en consola:
+
+nombre: Ana  
+edad: 30  
+profesion: Ingeniera  
+
+📌 Ejemplo con Object.keys()
+js
+
+let claves = Object.keys(persona);
+console.log(claves); 
+📝 Salida:
+["nombre", "edad", "profesion"]
+
+📌 Ejemplo con Object.values()
+js
+
+let valores = Object.values(persona);
+console.log(valores);
+📝 Salida:
+["Ana", 30, "Ingeniera"]
+
+📌 Ejemplo con Object.entries()
+js
+
+let entradas = Object.entries(persona);
+console.log(entradas);
+📝 Salida:  
+js
+
+[
+  ["nombre", "Ana"],
+  ["edad", 30],
+  ["profesion", "Ingeniera"]
+]
+
+📌 Estructura de for...in
+La sintaxis básica es:
+
+js
+
+for (let variable in objeto) {
+    // Código que se ejecuta para cada propiedad
+}
+📍 Explicación de cada parte:
+1️⃣ variable → Representa el nombre de la propiedad del objeto en cada iteración.
+2️⃣ objeto → Es el objeto que estamos recorriendo.
+3️⃣ Dentro del bloque {} usamos objeto[variable] para acceder al valor de esa propiedad.
+
+📌 Tu código explicado paso a paso
+js
+
+let libro = {
+    titulo: "El Señor de los Anillos",
+    autor: "J.R.R. Tolkien",
+    año: 1954,
+}
+Aquí tenemos un objeto con tres propiedades:
+
+"titulo" → "El Señor de los Anillos"
+
+"autor" → "J.R.R. Tolkien"
+
+"año" → 1954
+
+📌 Ahora recorremos el objeto con for...in:
+js
+
+for (let propiedad in libro) {
+    console.log(`${propiedad}: ${libro[propiedad]}`);
+}
+🔍 ¿Qué pasa en cada vuelta del bucle?
+
+Iteración	propiedad toma el valor de:	        libro[propiedad] devuelve:
+1° vuelta	      "titulo"	                    "El Señor de los Anillos"
+2° vuelta	      "autor"	                    "J.R.R. Tolkien"
+3° vuelta	      "año"	                         1954
+📝 Salida en consola:
+
+titulo: El Señor de los Anillos
+autor: J.R.R. Tolkien
+año: 1954
+
+📌 ¿Por qué usamos libro[propiedad] en lugar de libro.propiedad?
+📍 Cuando accedemos a un objeto, normalmente usamos punto (.):
+js
+
+console.log(libro.titulo); // "El Señor de los Anillos"
+🔸 Pero en for...in, la propiedad se guarda como una STRING, por eso usamos [].
+
+🚨 Si usamos libro.propiedad, JavaScript buscaría una propiedad llamada propiedad, que no existe.
+
+📌 Ejemplo del error:
+
+js
+
+console.log(libro.propiedad); // ❌ undefined
+console.log(libro["titulo"]); // ✅ "El Señor de los Anillos"
+📌 Resumen rápido
+1️⃣ for...in recorre las propiedades (claves) de un objeto.
+2️⃣ propiedad es una string, por lo que usamos objeto[propiedad] para acceder al valor.
+3️⃣ Es útil para recorrer objetos completos sin importar cuántas propiedades tenga.
