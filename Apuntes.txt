@@ -507,3 +507,324 @@ Resumen de la Unidad
 ✅ break: Para detener un bucle antes de que termine.
 ✅ continue: Para saltar una iteración sin salir del bucle.
 ✅ try...catch: Para manejar errores sin que el programa se rompa.
+
+Un bucle anidado es simplemente un bucle dentro de otro bucle. Se usa cuando necesitamos trabajar con estructuras en dos dimensiones, como tablas, patrones de asteriscos, matrices, etc.
+
+🔹 ¿Cómo funciona?
+El bucle externo controla la cantidad de veces que se ejecuta el bucle interno.
+
+📌 Ejemplo 1: Imprimir una cuadrícula de asteriscos (5x5)
+
+js
+for (let i = 1; i <= 5; i++) { // Controla las filas
+    let linea = "";
+    for (let j = 1; j <= 5; j++) { // Controla las columnas
+        linea += "* ";
+    }
+    console.log(linea);
+}
+✅ Salida:
+
+markdown
+Copiar
+Editar
+* * * * * 
+* * * * * 
+* * * * * 
+* * * * * 
+* * * * * 
+🔍 Explicación
+El for externo (i) maneja las filas (va de 1 a 5).
+
+El for interno (j) maneja las columnas (va de 1 a 5).
+
+linea += "* " construye cada fila con asteriscos antes de imprimirla.
+
+📌 Ejemplo 2: Triángulo de números
+js
+for (let i = 1; i <= 5; i++) {
+    let linea = "";
+    for (let j = 1; j <= i; j++) {
+        linea += j + " ";
+    }
+    console.log(linea);
+}
+✅ Salida:
+
+1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 3 4 5 
+🔍 Explicación
+El primer for (i) maneja las filas.
+
+El segundo for (j) imprime números del 1 hasta i en cada fila.
+
+📌 Ejemplo 3: Tablas de multiplicar (1 al 5)
+
+for (let i = 1; i <= 5; i++) {
+    console.log(`Tabla del ${i}:`);
+    for (let j = 1; j <= 10; j++) {
+        console.log(`${i} x ${j} = ${i * j}`);
+    }
+    console.log(""); // Espacio entre tablas
+}
+✅ Salida (Ejemplo con i = 2):
+
+Tabla del 2:
+2 x 1 = 2
+2 x 2 = 4
+2 x 3 = 6
+...
+2 x 10 = 20
+🚀 Resumen
+Los bucles anidados son útiles cuando necesitamos estructuras con filas y columnas.
+
+El bucle externo controla las filas o las iteraciones principales.
+
+El bucle interno ejecuta acciones repetidas dentro de cada iteración del externo.
+
+🔹 ¿Qué es un array en JavaScript?
+Un array es una estructura de datos que permite almacenar múltiples valores en una sola variable. Se usa para organizar listas de elementos, como números, palabras u objetos.
+
+🔹 Cómo crear un array
+Podemos crear un array de varias maneras:
+
+js
+// Array vacío
+let miArray = [];
+
+// Array con valores
+let numeros = [1, 2, 3, 4, 5];
+
+let frutas = ["manzana", "pera", "plátano"];
+🔹 Cómo acceder a elementos de un array
+Cada elemento tiene un índice, comenzando desde 0.
+
+js
+
+console.log(frutas[0]); // "manzana"
+console.log(frutas[2]); // "plátano"
+🔹 Métodos para añadir elementos
+
+push() → Añade al final
+unshift() → Añade al inicio
+
+js
+
+frutas.push("naranja");  // ["manzana", "pera", "plátano", "naranja"]
+frutas.unshift("kiwi"); // ["kiwi", "manzana", "pera", "plátano", "naranja"]
+🔹 Métodos para eliminar elementos
+
+pop() → Elimina el último
+shift() → Elimina el primero
+
+js
+frutas.pop(); // ["kiwi", "manzana", "pera", "plátano"]
+frutas.shift(); // ["manzana", "pera", "plátano"]
+
+🔹 Diferencias entre slice() y splice()
+Estos dos métodos parecen similares, pero tienen usos muy diferentes:
+
+📌 slice() (extrae elementos SIN modificar el array original)
+📌 splice() (modifica el array original, eliminando o agregando elementos)
+
+🔹 Ejemplo con slice() (No modifica el array original)
+js
+let numeros = [10, 20, 30, 40, 50];
+
+// Extraemos una parte del array sin modificar el original
+
+let nuevosNumeros = numeros.slice(1, 4); // Desde la posición 1 hasta la 3 (sin incluir la 4)
+
+console.log(numeros);       // [10, 20, 30, 40, 50]  -> Array original intacto
+console.log(nuevosNumeros); // [20, 30, 40] -> Nuevo array con los elementos extraídos
+📌 slice(inicio, fin) → Extrae desde inicio hasta fin - 1.
+
+🔹 Ejemplo con splice() (Modifica el array original)
+js
+
+let colores = ["Rojo", "Azul", "Verde", "Amarillo", "Negro"];
+
+// Eliminamos 2 elementos desde la posición 1 y agregamos "Blanco" y "Morado"
+colores.splice(1, 2, "Blanco", "Morado");
+
+console.log(colores); 
+// ["Rojo", "Blanco", "Morado", "Amarillo", "Negro"]
+📌 splice(posición, cantidad, nuevoElemento1, nuevoElemento2, ...)
+👉 Borra cantidad de elementos y opcionalmente agrega nuevos en esa posición.
+
+🔹 Ordenar arrays con .sort()
+El método .sort() ordena los elementos de un array alfabéticamente por defecto. Sin embargo, cuando trabajamos con números, necesitamos pasarle una función de comparación.
+
+📌 Ejemplo 1: Ordenar números de menor a mayor
+js
+
+let numeros = [5, 10, 2, 8, 1];
+
+// Ordenar de menor a mayor
+numeros.sort((a, b) => a - b);
+
+console.log(numeros); // [1, 2, 5, 8, 10]
+🔸 Explicación:
+
+.sort() compara dos elementos (a y b).
+
+Si a - b es negativo, a se coloca antes que b.
+
+Si a - b es positivo, b se coloca antes que a.
+
+Si a - b es cero, quedan en el mismo lugar.
+
+📌 Ejemplo 2: Ordenar palabras alfabéticamente
+js
+
+let palabras = ["manzana", "pera", "uva", "banana"];
+
+palabras.sort();
+
+console.log(palabras); // ["banana", "manzana", "pera", "uva"]
+🔸 Las palabras se ordenan automáticamente en orden alfabético.
+
+🔹 Filtrar arrays con .filter()
+El método .filter() permite crear un nuevo array con los elementos que cumplen cierta condición.
+
+📌 Ejemplo 3: Filtrar números mayores a 10
+js
+
+let numeros = [5, 12, 8, 20, 3, 15];
+
+let mayoresA10 = numeros.filter(numero => numero > 10);
+
+console.log(mayoresA10); // [12, 20, 15]
+🔸 Explicación:
+
+.filter() recorre el array y mantiene solo los elementos que cumplen la condición numero > 10.
+
+📌 Ejemplo 4: Filtrar palabras por longitud
+js
+
+let palabras = ["casa", "elefante", "sol", "mariposa", "pez"];
+
+let palabrasLargas = palabras.filter(palabra => palabra.length > 4);
+
+console.log(palabrasLargas); // ["elefante", "mariposa"]
+🔸 Aquí filtramos las palabras que tienen más de 4 letras.
+
+📌 ¿Qué es un objeto en JavaScript?
+Un objeto es una estructura que almacena datos en pares clave-valor. Es como una caja donde guardamos información organizada.
+
+Ejemplo de un objeto simple:
+
+js
+
+let persona = {
+    nombre: "Juan",
+    edad: 25,
+    ciudad: "Madrid"
+};
+
+console.log(persona.nombre); // "Juan"
+console.log(persona.edad);   // 25
+Aquí persona es un objeto con tres propiedades: nombre, edad y ciudad.
+
+1️⃣ Crear y acceder a propiedades de un objeto
+Puedes acceder a las propiedades de dos maneras:
+
+✔ Con punto (.)
+
+js
+
+console.log(persona.nombre); // "Juan"
+✔ Con corchetes ([])
+
+js
+
+console.log(persona["edad"]); // 25
+
+
+2️⃣ Modificar propiedades del objeto
+Para cambiar el valor de una propiedad en un objeto, simplemente accedemos a ella y asignamos un nuevo valor.
+
+Ejemplo:
+js
+
+let persona = {
+    nombre: "Juan",
+    edad: 25
+};
+
+// Modificar la edad
+persona.edad = 26;
+console.log(persona.edad); // 26
+
+3️⃣ Agregar nuevas propiedades al objeto
+Puedes agregar propiedades al objeto en cualquier momento.
+
+Ejemplo:
+js
+
+persona.direccion = "Calle Falsa 123";
+console.log(persona.direccion); // "Calle Falsa 123"
+
+4️⃣ Eliminar propiedades
+Para eliminar una propiedad de un objeto, usamos el operador delete.
+
+Ejemplo:
+js
+
+delete persona.direccion;
+console.log(persona.direccion); // undefined
+
+Métodos de objetos
+Un método de objeto es simplemente una función que se define dentro de un objeto. Se usa para que el objeto realice alguna acción o calcule algún valor basado en sus propiedades. Los métodos se definen igual que las funciones, pero dentro del objeto.
+
+Ejemplo de un método de objeto:
+javascript
+
+let coche = {
+    marca: "Lamborghini",
+    modelo: "Huracán",
+    año: 2022,
+    // Método que muestra información sobre el coche
+    mostrarInfo: function() {
+        console.log(`Este coche es un ${this.marca} ${this.modelo} del año ${this.año}.`);
+    }
+};
+
+// Llamamos al método del objeto
+coche.mostrarInfo(); // Esto imprimirá: Este coche es un Lamborghini Huracán del año 2022.
+En este ejemplo, el objeto coche tiene una propiedad llamada mostrarInfo que es un método. Este método utiliza this para acceder a las propiedades del objeto (marca, modelo, año) y las imprime en la consola.
+
+El uso de this
+El valor de this en JavaScript hace referencia al objeto que está llamando al método. Es una forma de acceder a las propiedades y métodos del objeto desde dentro de la propia función.
+
+En el ejemplo anterior:
+
+javascript
+
+mostrarInfo: function() {
+    console.log(`Este coche es un ${this.marca} ${this.modelo} del año ${this.año}.`);
+}
+this.marca se refiere a la propiedad marca del objeto coche.
+
+this.modelo se refiere a la propiedad modelo del objeto coche.
+
+this.año se refiere a la propiedad año del objeto coche.
+
+Métodos abreviados con this
+En ECMAScript 6 (ES6), podemos usar una forma más corta para escribir los métodos dentro de un objeto. La función es definida de una manera más compacta:
+
+javascript
+
+let coche = {
+    marca: "Lamborghini",
+    modelo: "Huracán",
+    año: 2022,
+    mostrarInfo() {
+        console.log(`Este coche es un ${this.marca} ${this.modelo} del año ${this.año}.`);
+    }
+};
+
+coche.mostrarInfo(); // Esto también imprimirá: Este coche es un Lamborghini Huracán del año 2022.
