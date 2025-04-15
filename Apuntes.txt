@@ -956,3 +956,56 @@ console.log(libro["titulo"]); // ✅ "El Señor de los Anillos"
 1️⃣ for...in recorre las propiedades (claves) de un objeto.
 2️⃣ propiedad es una string, por lo que usamos objeto[propiedad] para acceder al valor.
 3️⃣ Es útil para recorrer objetos completos sin importar cuántas propiedades tenga.
+
+
+🔹 ¿Qué es una función en JavaScript?
+Una función es un bloque de código reutilizable que ejecuta una tarea específica. Nos permite escribir código más organizado y evitar la repetición.
+
+🔹 Sintaxis de una función
+js
+Copiar
+Editar
+function saludar() {
+    console.log("¡Hola! Bienvenido a JavaScript.");
+}
+📌 Para ejecutarla, simplemente la llamamos:
+
+js
+Copiar
+Editar
+saludar(); // Salida: ¡Hola! Bienvenido a JavaScript.
+🔹 Funciones con parámetros
+Podemos pasar valores a una función usando parámetros.
+
+js
+Copiar
+Editar
+function saludar(nombre) {
+    console.log(`¡Hola, ${nombre}!`);
+}
+
+saludar("Juan");  // Salida: ¡Hola, Juan!
+saludar("Ana");   // Salida: ¡Hola, Ana!
+📌 Explicación:
+
+nombre es un parámetro (una variable que recibe la función).
+
+Cuando llamamos saludar("Juan"), el "Juan" es un argumento que sustituye al parámetro.
+
+🔹 Funciones con retorno de valores (return)
+Podemos hacer que una función devuelva un valor con return:
+
+js
+Copiar
+Editar
+function sumar(a, b) {
+    return a + b;
+}
+
+let resultado = sumar(5, 3);
+console.log(resultado); // Salida: 8
+📌 Explicación:
+
+sumar(a, b) recibe dos números y devuelve la suma con return.
+
+Guardamos el valor devuelto en la variable resultado y lo mostramos en consola.
